@@ -10,6 +10,7 @@ class Airport
   end
 
   def launch plane
+    hangar.delete plane
     plane.take_off
   end
 

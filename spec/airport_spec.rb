@@ -13,16 +13,21 @@ require 'airport'
 
 describe Airport do
 
-  let(:plane) { plane = double :plane, land: nil }
+  let(:plane) { plane = double :plane, land: nil, take_off: nil }
 
-  describe 'launch' do
+  describe 'launch' do # method renamed to launch as wasn't happy with #take_off
+    
     it 'instructs a plane to take off' do
       subject.land plane
       expect(plane).to receive :take_off
       subject.launch plane
     end
 
-    xit 'releases a plane'
+    it 'releases a plane' do
+      subject.land plane
+      subject.launch plane
+      expect(subject.in_hangar?(plane)).to eq false
+    end
   end
 
   describe 'landing' do
