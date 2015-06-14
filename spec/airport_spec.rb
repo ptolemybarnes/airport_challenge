@@ -82,7 +82,9 @@ describe Airport do
       end
 
       it 'does not allow a plane to land' do
-
+        allow(subject.weatherman).to receive(:stormy?).and_return(true)
+        expect { subject.land(plane) }.to raise_error(
+          'Cannot land plane due to poor weather conditions.')
       end
     end
   end

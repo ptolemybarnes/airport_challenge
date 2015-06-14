@@ -9,6 +9,7 @@ class Airport
   end
 
   def land plane
+    raise 'Cannot land plane due to poor weather conditions.' if weatherman.stormy?
     raise 'The airport is full.' if hangar.count >= capacity
     plane.land
     hangar << plane
