@@ -12,6 +12,10 @@ class Plane
   def land
     self.flying = false
   end
+  
+  def landed?
+    !flying
+  end
 
   private
 
