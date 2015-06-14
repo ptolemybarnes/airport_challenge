@@ -13,6 +13,8 @@ require 'airport'
 
 describe Airport do
 
+  let(:plane) { plane = double :plane, land: nil }
+
   describe 'take off' do
     xit 'instructs a plane to take off'
 
@@ -21,16 +23,20 @@ describe Airport do
 
   describe 'landing' do
     it 'instructs a plane to land' do
-      plane = double :plane
       expect(plane).to receive :land
       subject.land plane
     end
 
-    it 'receives a plane' do
-      plane = double :plane, land: nil
-      subject.land plane
-      expect(subject.in_hangar?(plane)).to eq true
-    end
+  end
+  
+  it 'knows when a plane is in its hangar' do
+    subject.land plane
+    expect(subject.in_hangar?(plane)).to eq true
+  end
+
+  it 'knows when a plane is not in its hangar' do
+    subject.land plane
+    expect(subject.in_hangar?(double :plane)).to eq false
   end
 
   describe 'traffic control' do
