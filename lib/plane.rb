@@ -1,7 +1,7 @@
 class Plane
 
   def flying?
-    true
+    @flying
   end
 
   def land
