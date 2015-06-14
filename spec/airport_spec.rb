@@ -13,7 +13,10 @@ require 'airport'
 
 describe Airport do
 
-  let(:plane) { plane = double :plane, land: nil, take_off: nil }
+  let(:plane) { double :plane, land: nil, take_off: nil }
+  let(:weatherman) { double :weatherman, stormy?: false } 
+
+  subject { Airport.new weatherman  } 
 
   describe 'launch' do # method renamed to launch as wasn't happy with #take_off
     
@@ -74,7 +77,7 @@ describe Airport do
         subject.land plane
 
         allow(subject.weatherman).to receive(:stormy?).and_return(true)
-        expect { subject.take_off(plane) }.to raise_error(
+        expect { subject.launch(plane) }.to raise_error(
           'Cannot launch plane due to poor weather conditions.')
       end
 

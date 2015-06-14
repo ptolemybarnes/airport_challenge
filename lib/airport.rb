@@ -2,9 +2,10 @@ class Airport
   DEFAULT_CAPACITY = 10
   attr_reader :capacity, :weatherman
 
-  def initialize
-    @capacity = DEFAULT_CAPACITY
-    @hangar   = []
+  def initialize(weatherman)
+    @weatherman = weatherman
+    @capacity   = DEFAULT_CAPACITY
+    @hangar     = []
   end
 
   def land plane
