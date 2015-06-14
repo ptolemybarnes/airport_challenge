@@ -22,7 +22,4 @@ describe Plane do
     expect(subject).to be_flying
   end
 
-
-  xit 'is flying after take off'
-
 end
