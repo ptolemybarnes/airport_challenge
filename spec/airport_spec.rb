@@ -20,9 +20,15 @@ describe Airport do
   end
 
   describe 'landing' do
-    xit 'instructs a plane to land'
+    it 'instructs a plane to land' do
+      plane = double :plane
+      expect(plane).to receive :land
+      subject.land plane
+    end
 
-    xit 'receives a plane'
+    it 'receives a plane' do
+
+    end
   end
 
   describe 'traffic control' do
