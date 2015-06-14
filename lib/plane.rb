@@ -1,15 +1,20 @@
 class Plane
+  attr_reader :flying
 
   def initialize
-    @flying = true
+    self.flying = true
   end
 
   def flying?
-    @flying
+    flying
   end
 
   def land
-    @flying = false
+    self.flying = false
   end
+
+  private
+
+  attr_writer :flying
 
 end
