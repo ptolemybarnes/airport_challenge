@@ -15,13 +15,18 @@ describe Airport do
 
   let(:plane) { plane = double :plane, land: nil }
 
-  describe 'take off' do
-    xit 'instructs a plane to take off'
+  describe 'launch' do
+    it 'instructs a plane to take off' do
+      subject.land plane
+      expect(plane).to receive :take_off
+      subject.launch plane
+    end
 
     xit 'releases a plane'
   end
 
   describe 'landing' do
+    
     it 'instructs a plane to land' do
       expect(plane).to receive :land
       subject.land plane

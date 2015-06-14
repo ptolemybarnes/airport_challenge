@@ -9,6 +9,10 @@ class Airport
     hangar << plane
   end
 
+  def launch plane
+    plane.take_off
+  end
+
   def in_hangar? plane
     hangar.include? plane
   end
