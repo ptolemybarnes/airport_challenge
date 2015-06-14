@@ -52,10 +52,12 @@ describe Airport do
   describe 'traffic control' do
 
     context 'when airport is full' do
+
       it 'does not allow a plane to land' do
         subject.capacity.times { subject.land plane }
         expect { subject.land plane }.to raise_error 'The airport is full.'
       end
+
     end
 
     # Include a weather condition.
@@ -68,9 +70,17 @@ describe Airport do
     # the plane can not land, and must not be in the airport
 
     context 'when weather conditions are stormy' do
-      xit 'does not allow a plane to take off'
+      it 'does not allow a plane to take off' do
+        subject.land plane
 
-      xit 'does not allow a plane to land'
+        allow(subject.weatherman).to receive(:stormy?).and_return(true)
+        expect { subject.take_off(plane) }.to raise_error(
+          'Cannot launch plane due to poor weather conditions.')
+      end
+
+      it 'does not allow a plane to land' do
+
+      end
     end
   end
 end

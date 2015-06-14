@@ -1,6 +1,6 @@
 class Airport
   DEFAULT_CAPACITY = 10
-  attr_reader :capacity
+  attr_reader :capacity, :weatherman
 
   def initialize
     @capacity = DEFAULT_CAPACITY
@@ -14,6 +14,7 @@ class Airport
   end
 
   def launch plane
+    raise 'Cannot launch plane due to poor weather conditions.' if weatherman.stormy?
     hangar.delete plane
     plane.take_off
   end
