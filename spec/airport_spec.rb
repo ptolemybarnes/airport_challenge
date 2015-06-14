@@ -73,9 +73,9 @@ describe Airport do
     # the plane can not land, and must not be in the airport
 
     context 'when weather conditions are stormy' do
+
       it 'does not allow a plane to take off' do
         subject.land plane
-
         allow(subject.weatherman).to receive(:stormy?).and_return(true)
         expect { subject.launch(plane) }.to raise_error(
           'Cannot launch plane due to poor weather conditions.')
