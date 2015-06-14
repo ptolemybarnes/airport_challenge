@@ -27,7 +27,9 @@ describe Airport do
     end
 
     it 'receives a plane' do
-
+      plane = double :plane, land: nil
+      subject.land plane
+      expect(subject.in_hangar?(plane)).to eq true
     end
   end
 
