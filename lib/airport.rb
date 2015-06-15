@@ -1,6 +1,6 @@
 class Airport
-  DEFAULT_CAPACITY = 10
   attr_reader :capacity, :weatherman
+  DEFAULT_CAPACITY = 10
 
   def initialize(weatherman)
     @weatherman = weatherman
@@ -26,11 +26,11 @@ class Airport
   end
 
   private
+  
+  attr_reader :hangar
 
   def at_capacity?
     hangar.count >= capacity
   end
-
-  attr_reader :hangar
 
 end
