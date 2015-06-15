@@ -10,7 +10,7 @@ class Airport
 
   def land plane
     raise 'Cannot land plane due to poor weather conditions.' if weatherman.stormy?
-    raise 'The airport is full.' if hangar.count >= capacity
+    raise 'The airport is full.'                              if at_capacity?
     plane.land
     hangar << plane
   end
@@ -26,6 +26,10 @@ class Airport
   end
 
   private
+
+  def at_capacity?
+    hangar.count >= capacity
+  end
 
   attr_reader :hangar
 
